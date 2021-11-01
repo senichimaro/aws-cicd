@@ -1,5 +1,5 @@
-FROM python:3.7
+FROM python:stretch
 COPY . .
 WORKDIR .
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["gunicorn", "--bind", ":8080", "main:APP"]
